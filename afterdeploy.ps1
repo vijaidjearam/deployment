@@ -1,10 +1,10 @@
-#disable network card while shutdown
-Set-ItemProperty -Path 'HKLM:\System\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0010' -Name PnPCapabilities -Value 280 -Force
-Set-ItemProperty -Path 'HKLM:\System\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0010' -Name ULPMode -value 0 -Force
 #Set dns by dhcp server
 $ipaddr = ((Test-NetConnection).SourceAddress).IPAddress
 $interfaceindex = (get-NetIPAddress -IPAddress $ipaddr).ifIndex
 Set-DnsClientServerAddress -InterfaceIndex $interfaceindex -ResetServerAddresses
+#disable network card while shutdown
+Set-ItemProperty -Path 'HKLM:\System\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0010' -Name PnPCapabilities -Value 280 -Force
+Set-ItemProperty -Path 'HKLM:\System\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0010' -Name ULPMode -value 0 -Force
 #install Teams
 choco install microsoft-teams.install -y --params "'/AllUsers /NoAutoStart'"
 # while using net local group command the french accent 'à' is not getting populated correctly during usage of command to bypass it we use the following command below
