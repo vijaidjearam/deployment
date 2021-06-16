@@ -6,6 +6,8 @@ Set-DnsClientServerAddress -InterfaceIndex $interfaceindex -ResetServerAddresses
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/deployment/main/disablenetworkcardturnoffwhileshutdown.ps1'))
 #install Teams
 choco install microsoft-teams.install -y --params "'/AllUsers /NoAutoStart'"
+#uninstall project 2019
+cscript C:\PROGRA~2\MICROS~3\Office15\ospp.vbs /unpkey:6MWKP
 # while using net local group command the french accent 'à' is not getting populated correctly during usage of command to bypass it we use the following command below
 # the sid S-1-5-32-555 corresponds to ultilisateur du bureau à distance
 $Group = Get-WmiObject -Query "Select * From Win32_Group Where LocalAccount = TRUE And SID = 'S-1-5-32-555'"
