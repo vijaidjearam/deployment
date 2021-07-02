@@ -18,3 +18,4 @@ net localgroup $GroupName "985-Employee" /ADD
 net localgroup "Administrateurs" "985-Student" /ADD
 net localgroup "Administrateurs" "985-Faculty" /ADD
 net localgroup "Administrateurs" "985-Employee" /ADD
+Get-CimInstance -ClassName win32_UserProfile | Where-Object {$_.LocalPath -like "*local-djeara01*"} | Remove-CimInstance
